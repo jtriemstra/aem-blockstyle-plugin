@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1513720274235
+Build-Jdk: 1.8.0_144
+Built-By: JTriemstra
+Bundle-Description: Maven Multimodule project for blockstyle-plugin.
+Bundle-ManifestVersion: 2
+Bundle-Name: blockstyle-plugin Bundle
+Bundle-SymbolicName: com.test-projects.blockstyle-plugin-bundle
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.testprojects.blockstyle;uses:="org.apache.sling.mode
+ ls.annotations,org.apache.sling.api.resource,javax.inject";version="1.0
+ .0"
+Import-Package: javax.inject,org.apache.sling.api.resource;version="[2.5
+ ,3)",org.apache.sling.models.annotations;version="[1.0,2)"
+Tool: Bnd-1.50.0
