@@ -1,0 +1,52 @@
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    cq:dialogMode="floating"
+    cq:layout="editbar"
+    jcr:primaryType="cq:EditConfig">
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        editorType="text">
+        <config jcr:primaryType="nt:unstructured">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+                <lists
+                    jcr:primaryType="nt:unstructured"
+                    features="[none]"/>
+                <justify
+                    jcr:primaryType="nt:unstructured"
+                    features="[none]"/>
+                <format
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+                <blockstyle2
+                    jcr:primaryType="nt:unstructured"
+                    features="*"
+                    >
+                    <formats
+                        jcr:primaryType="cq:WidgetCollection">
+                        <p jcr:primaryType="nt:unstructured" tag="p" description="Paragraph" />
+                        <h1 jcr:primaryType="nt:unstructured" tag="h1" description="Heading 1" />
+                        <h2 jcr:primaryType="nt:unstructured" tag="h2" description="Heading 2" />
+                        <h3 jcr:primaryType="nt:unstructured" tag="h3" description="Heading 3" />
+                        <div jcr:primaryType="nt:unstructured" tag="div" description="Div" />
+                    </formats>
+                </blockstyle2>
+            </rtePlugins>
+            <uiSettings jcr:primaryType="nt:unstructured">
+            	<cui jcr:primaryType="nt:unstructured">
+            	    <inline
+                    	jcr:primaryType="nt:unstructured"
+                    	toolbar="[format#bold,format#italic,format#underline,-,links#modifylink,links#unlink,links#anchor,-,fullscreen#start,-,control#close,control#save]" />
+            	    <fullscreen
+	                    jcr:primaryType="nt:unstructured"
+	                    toolbar="[#blockstyle2,format#bold,format#italic,format#underline,-,links#modifylink,links#unlink,links#anchor,-,justify#justifyleft,justify#justifycenter,justify#justifyright,-,lists#unordered,lists#ordered,lists#outdent,lists#indent,-,fullscreen#finish,-,control#close,control#save]" >
+                        <popovers
+                    		jcr:primaryType="nt:unstructured"	>
+                            <blockstyle2
+                    			jcr:primaryType="nt:unstructured" ref="blockstyle2" items="[blockstyle2:getFormats:blockstyle2-pulldown]" />
+                        </popovers>
+                    </fullscreen>
+            	</cui>
+            </uiSettings>
+         </config>
+    </cq:inplaceEditing>
+</jcr:root>

@@ -31,7 +31,14 @@
                     	toolbar="[format#bold,format#italic,format#underline,-,links#modifylink,links#unlink,links#anchor,-,fullscreen#start,-,control#close,control#save]" />
             	    <fullscreen
 	                    jcr:primaryType="nt:unstructured"
-	                    toolbar="[test-projects#blockstyle,format#bold,format#italic,format#underline,-,links#modifylink,links#unlink,links#anchor,-,justify#justifyleft,justify#justifycenter,justify#justifyright,-,lists#unordered,lists#ordered,lists#outdent,lists#indent,-,fullscreen#finish,-,control#close,control#save]" />
+	                    toolbar="[test-projects#blockstyle,format#bold,format#italic,format#underline,-,links#modifylink,links#unlink,links#anchor,-,justify#justifyleft,justify#justifycenter,justify#justifyright,-,lists#unordered,lists#ordered,lists#outdent,lists#indent,-,fullscreen#finish,-,control#close,control#save]" >
+                        <popovers jcr:primaryType="nt:unstructured">
+                            <paraformat jcr:primaryType="nt:unstructured"
+                                ref="paraformat" items="paraformat:getFormats:paraformat-pulldown">
+                                
+                            </paraformat>
+                        </popovers>
+                    </fullscreen>
             	</cui>
             </uiSettings>
          </config>

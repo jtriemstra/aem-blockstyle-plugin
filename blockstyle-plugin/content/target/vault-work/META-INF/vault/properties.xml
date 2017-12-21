@@ -4,7 +4,7 @@
 <comment>blockstyle-plugin Package</comment>
 <entry key="createdBy">JTriemstra</entry>
 <entry key="name">blockstyle-plugin-content</entry>
-<entry key="created">2017-12-19T16:51:15.237-0500</entry>
+<entry key="created">2017-12-21T09:14:06.581-0500</entry>
 <entry key="groupId">com.test-projects</entry>
 <entry key="version">1.0-SNAPSHOT</entry>
 <entry key="requiresRoot">false</entry>
