@@ -7,12 +7,12 @@ this["CUI"]["rte"]["Templates"]["blockstyle2-pulldown"] = Handlebars.template(fu
 	  
 	  var buffer = "", stack1, stack2;
 	  buffer += "\r\n    <li><button data-action=\"blockstyle2#";
-	  stack2 = ((stack1 = (depth0 && depth0.tag)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+	  stack2 = ((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
 	  if(stack2 || stack2 === 0) { buffer += stack2; }
-	  buffer += "\"><i class=\"coral-Icon coral-Icon--sizeS\"></i>";
+	  buffer += "\"><i class=\"coral-Icon coral-Icon--sizeS\" style='float:right'></i><span style='float:left; padding-right:.625rem; width:auto;'>";
 	  stack2 = ((stack1 = (depth0 && depth0.description)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
 	  if(stack2 || stack2 === 0) { buffer += stack2; }
-	  buffer += "</button></li>\r\n";
+	  buffer += "</span></button></li>\r\n";
 	  return buffer;
 	  }
 

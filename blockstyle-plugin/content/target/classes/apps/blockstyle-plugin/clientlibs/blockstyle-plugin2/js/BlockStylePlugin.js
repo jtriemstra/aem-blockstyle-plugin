@@ -11,38 +11,89 @@
 	
 	    extend: CUI.rte.plugins.ParagraphFormatPlugin,
 	
-	    initializeUI: function(tbGenerator) {
+	    /*getFormatId: function(dom) {
+	    	var x = this.inherited(arguments);
+	    	if (x == null) console.log("returning null from getFormatId");
+	    	return x;
+	    },*/
+	    
+	    getFormatId: function(dom) {
+	    	var tagName = dom.tagName.toLowerCase();
+	        var formats = this.getRawFormats();
+	        var formatCnt = formats.length;
+	        var classNames = "";
+	        if (dom.attributes["class"]){ 
+	        	classNames = dom.attributes["class"].value;
+	    	}
+	        for (var f = 0; f < formatCnt; f++) {
+	            var formatDef = formats[f];
+	            //TODO: this currently requires the existence of a p tag w/ no classes in the RTE definition
+	            if (formatDef.tag && (formatDef.tag == tagName) && (!formatDef.classes || formatDef.classes === classNames)) {
+	                return formatDef.id;
+	            }
+	        }
+	        
+	        return null;
+	    },
+	    
+	    getRawFormats: function(){
+	    	var com = CUI.rte.Common;
+	    	var ar = com.toArray(this.config.formats);
+	    	return ar;
+	    },
+	    
+	    getFormats: function() {
+	    	var com = CUI.rte.Common;
+	        if (this.cachedFormats == null) {
+	            this.cachedFormats = this.config.formats || { };
+	            com.removeJcrData(this.cachedFormats);
+	            this.cachedFormats = com.toArray(this.cachedFormats, "id", "description");
+	        }
+	        
+	        return this.cachedFormats;
+	    },
+
+	    getFormatById: function(formats, id) {
+	        var formatCnt = formats.length;
+	        for (var f = 0; f < formatCnt; f++) {
+	            if (formats[f].id == id) {
+	                return formats[f];
+	            }
+	        }
+	        return null;
+	    },
+	    
+	    /*initializeUI: function(tbGenerator) {
 			console.log("BlockStylePlugin initializeUI");
 	    	this.inherited(arguments);
 	    	//TODO: new icon
 	        tbGenerator.registerIcon("#blockstyle2", "coral-Icon coral-Icon--textParagraph");
+	    },*/
+
+	    initializeUI: function(tbGenerator) {
+	        var plg = CUI.rte.plugins;
+	        var ui = CUI.rte.ui;
+	        if (this.isFeatureEnabled("blockstyle2")) {
+	            this.formatUI = tbGenerator.createParaFormatter("blockstyle2", this, null,
+	                    this.getFormats());
+	            tbGenerator.addElement("blockstyle2", plg.Plugin.SORT_PARAFORMAT, this.formatUI,
+	                    10);
+	        }
+	    	//TODO: new icon
+	        tbGenerator.registerIcon("#blockstyle2", "coral-Icon coral-Icon--textParagraph");
+	    },
+	    
+	    execute: function(cmd) {
+	    	console.log("BlockStylePlugin execute");
+	        if (this.formatUI) {
+	            var formatId = this.formatUI.getSelectedFormat();
+	            if (formatId) {
+	                this.editorKernel.relayCmd("blockstyle", this.getFormatById(this.getRawFormats(),
+	                        formatId));
+	            }
+	        }
 	    }
 	    
 	});
 	CUI.rte.plugins.PluginRegistry.register("blockstyle2", BlockStylePlugin);
 })();
-
-this["CUI"]["rte"]["Templates"]["blockstyle2-pulldown"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-	  this.compilerInfo = [4,'>= 1.0.0'];
-	helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-	  var buffer = "", stack1, functionType="function", self=this;
-
-	function program1(depth0,data) {
-	  
-	  var buffer = "", stack1, stack2;
-	  buffer += "\r\n    <li><button data-action=\"blockstyle2#";
-	  stack2 = ((stack1 = (depth0 && depth0.tag)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
-	  if(stack2 || stack2 === 0) { buffer += stack2; }
-	  buffer += "\"><i class=\"coral-Icon coral-Icon--sizeS\"></i>";
-	  stack2 = ((stack1 = (depth0 && depth0.description)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
-	  if(stack2 || stack2 === 0) { buffer += stack2; }
-	  buffer += "</button></li>\r\n";
-	  return buffer;
-	  }
-
-	  buffer += "<ul class=\"coral-RichText-toolbar-list coral-RichText-toolbar-list--checkable\">\r\n";
-	  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
-	  if(stack1 || stack1 === 0) { buffer += stack1; }
-	  buffer += "\r\n</ul>";
-	  return buffer;
-	  });

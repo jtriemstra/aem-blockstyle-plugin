@@ -23,11 +23,11 @@
                     >
                     <formats
                         jcr:primaryType="cq:WidgetCollection">
-                        <p jcr:primaryType="nt:unstructured" tag="p" description="Paragraph" />
-                        <h1 jcr:primaryType="nt:unstructured" tag="h1" description="Heading 1" />
-                        <h2 jcr:primaryType="nt:unstructured" tag="h2" description="Heading 2" />
-                        <h3 jcr:primaryType="nt:unstructured" tag="h3" description="Heading 3" />
-                        <div jcr:primaryType="nt:unstructured" tag="div" description="Div" />
+                        <p jcr:primaryType="nt:unstructured" id="p" tag="p" description="Paragraph" />
+                        <h1 jcr:primaryType="nt:unstructured" id="h1" tag="h1" description="Heading 1 with some test classes" classes="test3 test2" />
+                        <h1b jcr:primaryType="nt:unstructured" id="h1b" tag="h1" description="Heading 1 with other classes" classes="test4 test2" />
+                        <h3 jcr:primaryType="nt:unstructured" id="h3" tag="h3" description="Heading 3" classes="test5 test2" />
+                        <div jcr:primaryType="nt:unstructured" id="div" tag="div" description="Div" classes="test6 test2" />
                     </formats>
                 </blockstyle2>
             </rtePlugins>
