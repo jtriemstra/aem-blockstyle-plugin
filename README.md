@@ -1,0 +1,1 @@
+This project creates a plugin for the AEM RTE. The plugin allows developers to specify element/style combinations (eg, <h1 class="primary-color">) rather than treating them separately, via the paraformat and styles plugins (which would result in <h1><span class="primary-color">Text</span></h1>).
